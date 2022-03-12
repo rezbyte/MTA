@@ -1,6 +1,6 @@
 # Minimalist Todo App
 
-<div><img src="https://raw.githubusercontent.com/rezbyte/MTA/assets/images/screenshot.jpg"></img></div>
+<div><img src="https://raw.githubusercontent.com/rezbyte/MTA/main/assets/images/screenshot.jpg"></img></div>
 
 This is a todo list app written in [TypeScript](https://www.typescriptlang.org/) with [Expo](https://docs.expo.dev/) & [React Native](https://reactnative.dev/).
 
