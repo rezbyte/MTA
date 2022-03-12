@@ -1,6 +1,6 @@
 # Minimalist Todo App
 
-<div><img src="https://raw.githubusercontent.com/rezbyte/TDM/assets/images/screenshot.jpg"></img></div>
+<div><img src="https://raw.githubusercontent.com/rezbyte/MTA/assets/images/screenshot.jpg"></img></div>
 
 This is a todo list app written in [TypeScript](https://www.typescriptlang.org/) with [Expo](https://docs.expo.dev/) & [React Native](https://reactnative.dev/).
 
@@ -10,10 +10,10 @@ The app can be run quickly using the Metro bundler & Expo Go.
 
 [Install the Expo CLI](https://docs.expo.dev/get-started/installation/) via your favorite package manager.
 
-To start the application, open a terminal & navigate to the 'TDM' folder:
+To start the application, open a terminal & navigate to the 'MTA' folder:
 
 ```
-cd <path/to/TDM>
+cd <path/to/MTA>
 ```
 
 Then type the following into your terminal:
