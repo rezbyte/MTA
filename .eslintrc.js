@@ -31,7 +31,8 @@ module.exports = {
     rules: {
         "react/jsx-filename-extension": [1, { extensions: [".tsx", ".jsx"] }],
         "import/extensions": ["error", "never"],
-        "react/jsx-uses-react": "off", // Not required since React 17
+        "react/jsx-uses-react": "off", // Importing React in components are not required since React 17
         "react/react-in-jsx-scope": "off",
+        "react/require-default-props": "off", // defaultProps are being phased out of React
     },
 };
