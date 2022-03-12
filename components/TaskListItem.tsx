@@ -1,26 +1,43 @@
 import { StyleSheet, Text, ViewStyle, Button, View } from "react-native";
 
-export default function TaskListItem(props:{task:Task, style?:ViewStyle, onClick:(newTask:Task)=>void}):JSX.Element {
-    return (
-        <View style={[styles.view, props.style]}>
-            <Text style={[props.task.done ? styles.disabledStyle : undefined, styles.text]}>- {props.task.name}</Text>
-            <Button title="X" onPress={() => props.onClick(props.task)} />
-        </View>
-    );
-};
-
 const styles = StyleSheet.create({
-    view: {
-        flex:1,
-        flexDirection:"row",
-        justifyContent:"space-between",
-        alignItems:"center",
-        width:373,
-    },
     disabledStyle: {
-        textDecorationStyle:"dashed",
+        textDecorationStyle: "dashed",
     },
     text: {
-        flex:1,
+        flex: 1,
+    },
+    view: {
+        alignItems: "center",
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: 373,
     },
 });
+
+interface Props {
+    task: Task;
+    style?: ViewStyle;
+    onClick: (newTask: Task) => void;
+}
+
+export default function TaskListItem({
+    task,
+    style = styles.view,
+    onClick,
+}: Props): JSX.Element {
+    return (
+        <View style={[styles.view, style]}>
+            <Text
+                style={[
+                    task.done ? styles.disabledStyle : undefined,
+                    styles.text,
+                ]}
+            >
+                - {task.name}
+            </Text>
+            <Button title="X" onPress={() => onClick(task)} />
+        </View>
+    );
+}
