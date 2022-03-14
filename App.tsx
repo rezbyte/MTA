@@ -4,6 +4,8 @@ import { StyleSheet, FlatList } from "react-native";
 import { useState } from "react";
 import TaskListItem from "./components/TaskListItem";
 import TaskCreator from "./components/TaskCreator";
+import Task from "./utils/Task";
+import removeFromArray from "./utils/arrayHelpers";
 
 const white = "#fff";
 const styles = StyleSheet.create({
@@ -27,19 +29,15 @@ const styles = StyleSheet.create({
 });
 
 export default function App(): JSX.Element {
-    const [tasks, setTasks] = useState([
-        { key: "0", name: "Welcome to my minimal todo list!", done: false },
-    ]);
+    const initialTask = new Task("Welcome to my minimal todo list!");
+    const [tasks, setTasks] = useState([initialTask]);
 
     const addTask = (newTask: Task) => {
         setTasks(tasks.concat(newTask));
     };
 
     const removeTask = (task: Task) => {
-        const newTasks = tasks.slice();
-        const index = newTasks.indexOf(task);
-        newTasks.splice(index, 1);
-        setTasks(newTasks);
+        setTasks(removeFromArray(tasks, task));
     };
 
     const renderItem = ({ item }: { item: Task }) => (
