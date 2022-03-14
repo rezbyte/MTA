@@ -50,3 +50,6 @@ For VSCode, this is done with the [Prettier extension]().
 ## Style Guide
 
 Follow [AirBnB's style guide](https://airbnb.io/javascript/react/) & [the React TypeScript Cheatsheets](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example).
+
+Feature branches should follow the `#issueNumber-issue-name` format.
+For example `#7-Create-a-branching-convention`
