@@ -24,16 +24,22 @@ export default function TaskCreator({
     onAdd,
     style = styles.container,
 }: Props): JSX.Element {
-    const [text, onChangeText] = useState("");
+    const [text, setText] = useState("");
+
+    const addTask = () => {
+        onAdd(new Task(text));
+        setText("");
+    };
 
     return (
         <View style={[styles.container, style]}>
             <TextInput
                 style={styles.input}
-                onChangeText={onChangeText}
+                onChangeText={setText}
+                onSubmitEditing={addTask}
                 value={text}
             />
-            <Button onPress={() => onAdd(new Task(text))} title="Add" />
+            <Button onPress={addTask} title="Add" />
         </View>
     );
 }
