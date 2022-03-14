@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, TextInput, Button, View, ViewStyle } from "react-native";
+import Task from "../utils/Task";
 
 const styles = StyleSheet.create({
     container: {
@@ -25,12 +26,6 @@ export default function TaskCreator({
 }: Props): JSX.Element {
     const [text, onChangeText] = useState("");
 
-    function createTask(name: string): Task {
-        const currentDateTime = new Date(Date.now()).toISOString();
-        const key = name + currentDateTime;
-        return { key, name, done: false };
-    }
-
     return (
         <View style={[styles.container, style]}>
             <TextInput
@@ -38,7 +33,7 @@ export default function TaskCreator({
                 onChangeText={onChangeText}
                 value={text}
             />
-            <Button onPress={() => onAdd(createTask(text))} title="Add" />
+            <Button onPress={() => onAdd(new Task(text))} title="Add" />
         </View>
     );
 }
