@@ -1,6 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { StyleSheet, FlatList, useColorScheme } from "react-native";
+import {
+    Platform,
+    PlatformColor,
+    StyleSheet,
+    FlatList,
+    useColorScheme,
+} from "react-native";
 import { useState } from "react";
 import { white, black } from "./constants/colors";
 import TaskListItem from "./components/TaskListItem";
@@ -16,29 +22,82 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
     containerDark: {
-        backgroundColor: black,
+        ...Platform.select({
+            ios: {
+                backgroundColor: PlatformColor("systemBackground"),
+            },
+            android: {
+                backgroundColor: PlatformColor(
+                    "@android:color/background_dark"
+                ),
+            },
+            default: { backgroundColor: black },
+        }),
     },
     containerLight: {
-        backgroundColor: white,
+        ...Platform.select({
+            ios: {
+                backgroundColor: PlatformColor("systemBackground"),
+            },
+            android: {
+                backgroundColor: PlatformColor(
+                    "@android:color/background_light"
+                ),
+            },
+            default: { backgroundColor: white },
+        }),
     },
     creator: {
         flex: 1,
     },
     creatorDark: {
-        borderColor: white,
-        color: white,
+        borderColor: white, // PlatformColor crashes the app when used with borderColor
+        ...Platform.select({
+            ios: {
+                color: PlatformColor("label"),
+            },
+            android: {
+                color: PlatformColor("@android:color/primary_text_dark"),
+            },
+            default: { color: white },
+        }),
     },
     creatorLight: {
-        color: black,
+        borderColor: black,
+        ...Platform.select({
+            ios: {
+                color: PlatformColor("label"),
+            },
+            android: {
+                color: PlatformColor("@android:color/primary_text_light"),
+            },
+            default: { color: black },
+        }),
     },
     task: {
         marginBottom: 5,
     },
     taskDark: {
-        color: white,
+        ...Platform.select({
+            ios: {
+                color: PlatformColor("label"),
+            },
+            android: {
+                color: PlatformColor("@android:color/primary_text_dark"),
+            },
+            default: { color: "white" },
+        }),
     },
     taskLight: {
-        color: black,
+        ...Platform.select({
+            ios: {
+                color: PlatformColor("label"),
+            },
+            android: {
+                color: PlatformColor("@android:color/primary_text_light"),
+            },
+            default: { color: "black" },
+        }),
     },
     taskList: {
         flex: 3,
