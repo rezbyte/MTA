@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { StyleSheet, TextInput, Button, View, ViewStyle } from "react-native";
+import {
+    StyleSheet,
+    TextInput,
+    Button,
+    View,
+    ViewStyle,
+    TextStyle,
+} from "react-native";
 import Task from "../utils/Task";
 
 const styles = StyleSheet.create({
@@ -17,13 +24,10 @@ const styles = StyleSheet.create({
 
 interface Props {
     onAdd: (newTask: Task) => void;
-    style?: ViewStyle;
+    style?: (ViewStyle & TextStyle)[];
 }
 
-export default function TaskCreator({
-    onAdd,
-    style = styles.container,
-}: Props): JSX.Element {
+export default function TaskCreator({ onAdd, style }: Props): JSX.Element {
     const [text, setText] = useState("");
 
     const addTask = () => {
@@ -34,7 +38,7 @@ export default function TaskCreator({
     return (
         <View style={[styles.container, style]}>
             <TextInput
-                style={styles.input}
+                style={[styles.input, style]}
                 onChangeText={setText}
                 onSubmitEditing={addTask}
                 value={text}
