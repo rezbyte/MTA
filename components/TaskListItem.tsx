@@ -1,4 +1,11 @@
-import { StyleSheet, Text, ViewStyle, Button, View } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    TextStyle,
+    ViewStyle,
+    Button,
+    View,
+} from "react-native";
 import Task from "../utils/Task";
 
 const styles = StyleSheet.create({
@@ -19,13 +26,13 @@ const styles = StyleSheet.create({
 
 interface Props {
     task: Task;
-    style?: ViewStyle;
+    style?: (ViewStyle & TextStyle)[];
     onClick: (newTask: Task) => void;
 }
 
 export default function TaskListItem({
     task,
-    style = styles.view,
+    style,
     onClick,
 }: Props): JSX.Element {
     return (
@@ -34,6 +41,7 @@ export default function TaskListItem({
                 style={[
                     task.done ? styles.disabledStyle : undefined,
                     styles.text,
+                    style,
                 ]}
             >
                 - {task.name}
