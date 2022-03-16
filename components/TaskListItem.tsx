@@ -1,4 +1,11 @@
-import { StyleSheet, Text, ViewStyle, Button, View } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    TextInput,
+    ViewStyle,
+    Button,
+    View,
+} from "react-native";
 import Task from "../utils/Task";
 
 const styles = StyleSheet.create({
@@ -27,7 +34,8 @@ export default function TaskListItem({
 }: Props): JSX.Element {
     return (
         <View style={[styles.view, style]}>
-            <Text style={styles.text}>- {task.name}</Text>
+            <Text style={styles.text}>- </Text>
+            <TextInput style={styles.text} value={task.name} />
             <Button title="X" onPress={() => onClick(task)} />
         </View>
     );
