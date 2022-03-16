@@ -2,6 +2,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
+    TextStyle,
     ViewStyle,
     Button,
     View,
