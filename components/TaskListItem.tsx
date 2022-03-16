@@ -23,19 +23,19 @@ const styles = StyleSheet.create({
 
 interface Props {
     task: Task;
-    style?: ViewStyle;
+    style?: (ViewStyle & TextStyle)[];
     onClick: (newTask: Task) => void;
 }
 
 export default function TaskListItem({
     task,
-    style = styles.view,
+    style,
     onClick,
 }: Props): JSX.Element {
     return (
         <View style={[styles.view, style]}>
-            <Text style={styles.text}>- </Text>
-            <TextInput style={styles.text} value={task.name} />
+            <Text style={style}>- </Text>
+            <TextInput style={[styles.text, style]} value={task.name} />
             <Button title="X" onPress={() => onClick(task)} />
         </View>
     );
