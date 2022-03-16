@@ -2,9 +2,6 @@ import { StyleSheet, Text, ViewStyle, Button, View } from "react-native";
 import Task from "../utils/Task";
 
 const styles = StyleSheet.create({
-    disabledStyle: {
-        textDecorationStyle: "dashed",
-    },
     text: {
         flex: 1,
     },
@@ -30,14 +27,7 @@ export default function TaskListItem({
 }: Props): JSX.Element {
     return (
         <View style={[styles.view, style]}>
-            <Text
-                style={[
-                    task.done ? styles.disabledStyle : undefined,
-                    styles.text,
-                ]}
-            >
-                - {task.name}
-            </Text>
+            <Text style={styles.text}>- {task.name}</Text>
             <Button title="X" onPress={() => onClick(task)} />
         </View>
     );
