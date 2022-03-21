@@ -38,6 +38,10 @@ export default function TaskListItem({
 }: Props): JSX.Element {
     const [value, setValue] = useState(task.name);
 
+    const deleteTask = () => {
+        onClick(task);
+    };
+
     const change = () => {
         onEdit(task, value);
     };
@@ -51,7 +55,7 @@ export default function TaskListItem({
                 onChangeText={setValue}
                 onEndEditing={change}
             />
-            <Button title="X" onPress={() => onClick(task)} />
+            <Button title="X" onPress={deleteTask} />
         </View>
     );
 }
