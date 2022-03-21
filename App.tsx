@@ -12,7 +12,7 @@ import { white, black } from "./constants/colors";
 import TaskListItem from "./components/TaskListItem";
 import TaskCreator from "./components/TaskCreator";
 import Task from "./utils/Task";
-import removeFromArray from "./utils/arrayHelpers";
+import { removeFromArray, editInArray } from "./utils/arrayHelpers";
 
 const styles = StyleSheet.create({
     container: {
@@ -125,10 +125,15 @@ export default function App(): JSX.Element {
         setTasks(removeFromArray(tasks, task));
     };
 
+    const updateTask = (task: Task, newName: string) => {
+        setTasks(editInArray(tasks, task, new Task(newName)));
+    };
+
     const renderItem = ({ item }: { item: Task }) => (
         <TaskListItem
             task={item}
             onClick={removeTask}
+            onEdit={updateTask}
             style={[styles.task, taskColor]}
         />
     );
