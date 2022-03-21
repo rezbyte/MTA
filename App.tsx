@@ -132,7 +132,7 @@ export default function App(): JSX.Element {
     const renderItem = ({ item }: { item: Task }) => (
         <TaskListItem
             task={item}
-            onClick={removeTask}
+            onDelete={removeTask}
             onEdit={updateTask}
             style={[styles.task, taskColor]}
         />

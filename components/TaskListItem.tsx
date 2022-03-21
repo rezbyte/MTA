@@ -26,20 +26,20 @@ const styles = StyleSheet.create({
 interface Props {
     task: Task;
     style?: (ViewStyle & TextStyle)[];
-    onClick: (newTask: Task) => void;
+    onDelete: (newTask: Task) => void;
     onEdit: (task: Task, newName: string) => void;
 }
 
 export default function TaskListItem({
     task,
     style,
-    onClick,
+    onDelete,
     onEdit,
 }: Props): JSX.Element {
     const [value, setValue] = useState(task.name);
 
     const deleteTask = () => {
-        onClick(task);
+        onDelete(task);
     };
 
     const change = () => {
