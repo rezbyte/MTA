@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     StyleSheet,
     Text,
@@ -35,8 +36,10 @@ export default function TaskListItem({
     onClick,
     onEdit,
 }: Props): JSX.Element {
-    const change = (newValue: string) => {
-        onEdit(task, newValue);
+    const [value, setValue] = useState(task.name);
+
+    const change = () => {
+        onEdit(task, value);
     };
 
     return (
@@ -44,8 +47,9 @@ export default function TaskListItem({
             <Text style={style}>- </Text>
             <TextInput
                 style={[styles.text, style]}
-                value={task.name}
-                onChangeText={change}
+                value={value}
+                onChangeText={setValue}
+                onEndEditing={change}
             />
             <Button title="X" onPress={() => onClick(task)} />
         </View>
